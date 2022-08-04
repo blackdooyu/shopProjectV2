@@ -14,8 +14,6 @@ import javax.persistence.*;
 public class Member extends BaseTime implements Persistable<String> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "member_id", nullable = false)
     private String email;
 
     @Column(nullable = false)
