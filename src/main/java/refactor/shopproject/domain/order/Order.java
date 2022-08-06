@@ -35,11 +35,12 @@ public class Order extends BaseTime {
     private int orderTotalPrice;
 
     //주문 생성
-    public static Order createOrder(Member member, OrderAddress orderAddress, OrderItem... orderItems) {
+    public static Order createOrder(String orderNumber, Member member, OrderAddress orderAddress, OrderItem... orderItems) {
         Order order = new Order();
         order.deliveryStatus = DeliveryStatus.READY;
         order.orderAddress = orderAddress;
         order.insertMember(member);
+        order.setOrderId(orderNumber);
 
         for (OrderItem orderItem : orderItems) {
             orderItem.orderComplete(order);
@@ -48,10 +49,10 @@ public class Order extends BaseTime {
         return order;
     }
 
-
-    private void createOrderId() {
-        orderId = LocalDate.now() + "1";
+    public void setOrderId(String orderNumber) {
+        this.orderId = LocalDate.now() + orderNumber;
     }
+
 
     private void insertMember(Member member) {
         this.member = member;
