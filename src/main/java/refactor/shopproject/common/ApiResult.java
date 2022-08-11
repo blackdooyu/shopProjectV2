@@ -1,4 +1,4 @@
-package refactor.shopproject.api.common;
+package refactor.shopproject.common;
 
 import org.springframework.http.HttpStatus;
 
