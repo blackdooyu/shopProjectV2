@@ -1,7 +1,9 @@
 package refactor.shopproject.common;
 
+import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
+@Getter
 public class ApiResult<T> {
 
     private T result;
