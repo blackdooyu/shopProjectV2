@@ -1,6 +1,8 @@
 package refactor.shopproject.api.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +20,10 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @PostMapping("")
-    public ApiResult<Boolean> signUp(@Valid @RequestBody MemberSignUpDto memberSignUpDto) {
-        return new ApiResult<>(memberService.signUp(memberSignUpDto));
+    // 회원가입
+    @PostMapping
+    public ResponseEntity<ApiResult> signUp(@Valid @RequestBody MemberSignUpDto memberSignUpDto) {
+        ApiResult<Boolean> result = new ApiResult<>(memberService.signUp(memberSignUpDto), HttpStatus.OK.value());
+        return ResponseEntity.ok(result);
     }
 }
