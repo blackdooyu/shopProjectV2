@@ -23,6 +23,7 @@ public class Member extends BaseTime implements Persistable<String> {
     private String name;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private MemberGrade memberGrade;
 
     private MemberBasicAddress basicAddress;

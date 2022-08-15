@@ -16,10 +16,10 @@ public class MemberSignUpDto {
     @Email
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "비밀번호를 입력해주세요")
     private String password;
 
-    @NotBlank
+    @NotBlank(message = "비밀번호를 입력해주세요")
     private String secondInputPassword;
 
     @NotNull(message = "이름은 필수입니다.")
