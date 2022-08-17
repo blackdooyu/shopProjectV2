@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import refactor.shopproject.application.MemberService;
 import refactor.shopproject.common.ApiResult;
+import refactor.shopproject.domain.member.dto.MemberLoginRequest;
+import refactor.shopproject.domain.member.dto.MemberSessionValue;
 import refactor.shopproject.domain.member.dto.MemberSignUpDto;
 
 import javax.validation.Valid;
@@ -26,4 +28,12 @@ public class MemberController {
         ApiResult<Boolean> result = new ApiResult<>(memberService.signUp(memberSignUpDto), HttpStatus.OK.value());
         return ResponseEntity.ok(result);
     }
+
+    //로그인
+    @PostMapping("/auth")
+    public ResponseEntity<ApiResult> signIn(@Valid @RequestBody MemberLoginRequest memberLoginRequest) {
+        ApiResult<MemberSessionValue> result = new ApiResult<>(memberService.signIn(memberLoginRequest), HttpStatus.OK.value());
+        return ResponseEntity.ok(result);
+    }
+
 }

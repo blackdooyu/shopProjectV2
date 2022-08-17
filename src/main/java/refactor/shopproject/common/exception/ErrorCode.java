@@ -3,6 +3,7 @@ package refactor.shopproject.common.exception;
 public enum ErrorCode {
 
     PASSWORD_NOT_EQUAL(403,"M001","비밀번호가 일치하지 않습니다."),
+    MEMBER_NOT_FOUND(401,"M002","존재하지 않는 회원입니다."),
     ;
 
     private final int status;

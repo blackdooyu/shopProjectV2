@@ -26,4 +26,11 @@ public class GlobalExceptionHandle {
         log.error("passwordNotEqualException : {}",errorResponses);
         return new ResponseEntity<>(errorResponses, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(MemberNotFoundException.class)
+    public ResponseEntity<ErrorResponse> MemberNotFoundException(MemberNotFoundException e) {
+        ErrorResponse response = new ErrorResponse(e.getErrorCode());
+        log.error("MemberNotFoundException : {}",response.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatus()));
+    }
 }
